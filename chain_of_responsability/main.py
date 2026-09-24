@@ -10,3 +10,8 @@ class Handler:
         if self.next_handler:
             return self.next_handler.handle(pedido)
         return None  # fim da cadeia, ninguem tratou
+class ValidacaoHandler(Handler):
+    def handle(self, pedido):
+        if not pedido["valido"]:
+            return "Pedido invalido: dados incompletos."
+        return super().handle(pedido)  # repassa adiante
