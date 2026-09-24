@@ -20,3 +20,10 @@ class EstoqueHandler(Handler):
         if not pedido["tem_estoque"]:
             return "Produto indisponivel em estoque."
         return "Pedido aprovado com sucesso!"
+validacao = ValidacaoHandler()
+estoque = EstoqueHandler()
+validacao.set_next(estoque)
+
+pedido = {"valido": True, "tem_estoque": True}
+resultado = validacao.handle(pedido)
+print(resultado)  # Pedido aprovado com sucesso!
