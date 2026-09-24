@@ -15,3 +15,8 @@ class ValidacaoHandler(Handler):
         if not pedido["valido"]:
             return "Pedido invalido: dados incompletos."
         return super().handle(pedido)  # repassa adiante
+class EstoqueHandler(Handler):
+    def handle(self, pedido):
+        if not pedido["tem_estoque"]:
+            return "Produto indisponivel em estoque."
+        return "Pedido aprovado com sucesso!"
